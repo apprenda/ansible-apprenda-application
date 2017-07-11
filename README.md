@@ -113,7 +113,7 @@ This demonstrates how to create an application, set a version, change component 
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
