@@ -1,0 +1,26 @@
+---
+# tasks file for apprenda
+- name: "Performing action {{ action }} @ {{ apprenda_url }} - {{ name | default('Apprenda Application Role') }}" 
+  apprenda_application:
+    apprenda_url: "{{ apprenda_url }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    tenant: "{{ tenant }}"
+    action: "{{ action }}"
+    app_name: "{{ app_name }}"
+    app_alias: "{{ app_alias }}"
+    app_description: "{{ app_description }}"
+    app_version_name: "{{ app_version_name }}"
+    app_version_alias: "{{ app_version_alias }}"
+    app_version_desc: "{{ app_version_desc }}"
+    app_archive_path: "{{ app_archive_path }}"
+    app_archive_uri: "{{ app_archive_uri }}"
+    app_patch_mode: "{{ app_patch_mode }}"
+    app_lifecycle_state: "{{ app_lifecycle_state }}"
+    app_state: "{{ app_state }}"
+    app_component_alias: "{{ app_component_alias }}"
+    app_component_settings: "{{ app_component_settings }}"
+    app_subscription_count: "{{ app_subscription_count }}"
+    app_subscription_plan_name: "{{ app_subscription_plan_name }}"
+  register: output
+- debug: msg="{{ output }}"

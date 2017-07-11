@@ -1,0 +1,16 @@
+---
+app_name: ""
+app_alias: ""
+app_description: ""
+app_version_name: ""
+app_version_alias: ""
+app_version_desc: ""
+app_archive_path: ""
+app_archive_uri: ""
+app_patch_mode: ""
+app_lifecycle_state: "published"
+app_state: "started"
+app_component_alias: ""
+app_component_settings: {}
+app_subscription_count: 1
+app_subscription_plan_name: ""
