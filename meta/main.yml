@@ -35,7 +35,7 @@ galaxy_info:
   platforms:
     - name: Apprenda
       versions:
-      - 7.1
+        - 7.1
   # - name: Fedora
   #   versions:
   #   - all
