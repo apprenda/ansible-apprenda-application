@@ -9,11 +9,13 @@ def authenticate(url, user, password, tenant):
     auth_data = {
         'username': user,
         'password': password,
-        'tenant': tenant
+        'tenantAlias': tenant
     }
     resp = requests.post(auth_url, verify=False, json=auth_data)
     resp_json = resp.json()
-    return resp_json['apprendaSessionToken']
+    if resp.status_code != 201:
+        return resp.json(), 1
+    return resp_json['apprendaSessionToken'], 0
 
 def list_apps(authToken, url):
     apps_url = "{0}/developer/api/v1/apps".format(url)
@@ -182,7 +184,9 @@ def main():
     password = module.params['password']
     tenant = module.params['tenant']
 
-    authTokenString = authenticate(apprenda_url, username, password, tenant)
+    (authTokenString, rc) = authenticate(apprenda_url, username, password, tenant)
+    if rc != 0:
+        module.fail_json(msg="failed to authenticate", result=authTokenString)
     authToken = { "ApprendaSessionToken": str(Header(authTokenString, 'utf-8')) }
     extra_facts = {}
     if action == "list" and (module.params['app_alias'] == "" or module.params['app_version_alias'] == ""):
